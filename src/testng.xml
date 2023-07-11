@@ -1,0 +1,17 @@
+
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="Test Suite - Parallel" parallel="tests" verbose="10" thread-count="4">
+    <parameter name="timeout" value="500"/>
+
+
+    <test name="Flight Results Filters">
+        <classes>
+            <class name="Test01"/>
+        </classes>
+    </test>
+
+
+
+</suite>
