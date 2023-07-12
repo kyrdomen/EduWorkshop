@@ -36,14 +36,14 @@ public class Test01 {
         driver.findElement(By.cssSelector("button[ng-click='addCrust()']")).click();
 
         // create customer
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("")));
-        driver.findElement(By.cssSelector("")).sendKeys("QA");
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//label[text()='First Name :']/following-sibling::input")));
+        driver.findElement(By.cssSelector("//label[text()='First Name :']/following-sibling::input")).sendKeys("QA");
 
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("")));
-        driver.findElement(By.cssSelector("")).sendKeys("Traveli");
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//label[text()='Last Name :']/following-sibling::input")));
+        driver.findElement(By.cssSelector("//label[text()='Last Name :']/following-sibling::input")).sendKeys("Traveli");
 
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("")));
-        driver.findElement(By.cssSelector("")).sendKeys("11111");
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//label[text()='Post Code :']/following-sibling::input")));
+        driver.findElement(By.cssSelector("//label[text()='Post Code :']/following-sibling::input")).sendKeys("11111");
 
         driver.findElement(By.xpath("//button[text()='Add Customer']")).click();
         driver.switchTo().alert().accept();
