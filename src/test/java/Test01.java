@@ -1,7 +1,9 @@
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -19,6 +21,7 @@ public class Test01 {
 
     @BeforeClass
     public void openBrowser(){
+        WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.navigate().to("https://www.globalsqa.com/angularJs-protractor/BankingProject/#/login");
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -34,13 +37,21 @@ public class Test01 {
 
         // create customer
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("")));
-        driver.findElement(By.cssSelector("")).sendKeys("");
+        driver.findElement(By.cssSelector("")).sendKeys("QA");
 
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("")));
+        driver.findElement(By.cssSelector("")).sendKeys("Traveli");
 
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("")));
+        driver.findElement(By.cssSelector("")).sendKeys("11111");
+
+        driver.findElement(By.xpath("//button[text()='Add Customer']")).click();
+        driver.switchTo().alert().accept();
 
         // go to customers , verify creation
-
-
+        driver.findElement(By.cssSelector("button[bg-click='showCust']")).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input[ng-model='searchCustomer']"))).sendKeys("QA");
+        Assert.assertTrue(driver.findElement(By.xpath("//td[text()='QA']")).isDisplayed());
 
     }
 }
